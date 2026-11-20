@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>5개년 성경 통독 및 새벽기도회 진도표</title>
+
+  <meta name="theme-color" content="#2b4c3f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="새벽성경통독" />
+  <link id="appleIcon" rel="apple-touch-icon" href="" />
+  <link id="appIcon" rel="icon" type="image/png" href="" />
+  <link id="appManifest" rel="manifest" href="" />
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --card: #ffffff;
+      --primary: #2b4c3f;
+      --primary-light: #e6efe9;
+      --band: #00c73c;
+      --band-dark: #00a832;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 24px 16px 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.45rem; font-weight: 700; }
+    header p { margin: 0 0 12px; font-size: 0.94rem; opacity: 0.9; }
+    .header-actions {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .install-guide-btn, .header-band-btn {
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .install-guide-box {
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid var(--primary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      font-size: 0.94rem;
+    }
+    .install-guide-box h3 { margin: 0 0 8px; color: var(--primary); font-size: 1.02rem; }
+    .install-guide-box ul { margin: 0; padding-left: 18px; }
+    .install-guide-box li { margin-bottom: 6px; }
+
+    .container { max-width: 840px; margin: 0 auto; padding: 16px; }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    .today-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .date-picker-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    input[type="date"], select, input[type="text"], textarea {
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: #fff;
+    }
+    .today-passage {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 8px 0;
+    }
+    .today-theme { font-size: 1.02rem; margin: 0 0 14px; color: var(--text); }
+    .today-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .action-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .read-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .read-link-btn:hover { background: var(--primary-light); }
+    .check-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .check-btn.done { background: #15803d; }
+
+    .note-box {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+    }
+    .note-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .note-box-header label {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--primary);
+    }
+    .save-status { font-size: 0.85rem; color: #15803d; font-weight: 600; }
+    textarea#noteInput {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.55;
+      background: #fcfcfa;
+    }
+    textarea#noteInput:focus { outline: 2px solid var(--primary); background: #fff; }
+    .band-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      align-items: center;
+    }
+    .copy-btn {
+      background: #f3f4f6;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #e5e7eb; }
+    .band-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--band);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .band-btn:hover { background: var(--band-dark); }
+
+    .progress-wrap { margin-top: 14px; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+    .tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .tab-btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 11px 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .controls select, .controls input { flex: 1; min-width: 130px; }
+    .btn-outline {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .list-item:last-child { border-bottom: none; }
+    .list-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 3px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .item-body { flex: 1; cursor: pointer; }
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-weight: 700;
+    }
+    .item-date { color: var(--muted); font-size: 0.9rem; }
+    .item-passage { color: var(--primary); font-size: 1.05rem; }
+    .item-theme { font-size: 0.94rem; margin-top: 2px; }
+    .item-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; align-items: center; }
+    .item-memo-badge {
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 700;
+      background: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .item-read-link {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .memo-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      background: #fcfcfa;
+      cursor: pointer;
+    }
+    .memo-card-head {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .memo-card-text { white-space: pre-wrap; font-size: 0.95rem; }
+    .hidden { display: none; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--primary-light); color: var(--primary); font-weight: 700; }
+    @media print {
+      body { background: #fff; }
+      header { color: #000; background: #fff; border-bottom: 2px solid #000; }
+      .header-actions, .install-guide-box, .tabs, .controls, .date-picker-wrap, .action-group, .progress-wrap, .note-box, .item-read-link { display: none !important; }
+      .card { box-shadow: none; border: none; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>5개년 성경 통독 · 새벽기도회 진도표</h1>
+    <p>매일(주 7일) 새벽 말씀 묵상 · 2026년 12월 ~ 2031년 11월 (66권 1,189장 완독)</p>
+    <div class="header-actions">
+      <button class="install-guide-btn" type="button" onclick="toggleInstallGuide()">📱 스마트폰 앱으로 설치하기</button>
+      <a class="header-band-btn" href="https://band.us/n/a4a6b872W4ga8" target="_blank" rel="noopener noreferrer">🟢 묵상 밴드 바로가기</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="install-guide-box hidden" id="installGuideBox">
+      <h3>스마트폰 바탕화면에 앱 아이콘 추가 방법</h3>
+      <ul>
+        <li><strong>삼성 갤럭시 (안드로이드):</strong> 크롬 또는 삼성 인터넷 화면 오른쪽 위/아래 <strong>메뉴(⋮ 또는 ≡)</strong> → <strong>‘홈 화면에 추가’</strong>(또는 앱 설치)를 누르세요.</li>
+        <li><strong>아이폰 (사파리):</strong> 화면 맨 아래 가운데 <strong>공유 버튼(⬆️)</strong> → 아래로 내려 <strong>‘홈 화면에 추가’</strong> → 오른쪽 위 <strong>‘추가’</strong>를 누르세요.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <div class="today-header">
+        <span class="badge" id="todayBadge">오늘의 말씀</span>
+        <div class="date-picker-wrap">
+          <label for="dateInput">날짜 이동:</label>
+          <input type="date" id="dateInput" min="2026-12-01" max="2031-11-30" />
+        </div>
+      </div>
+      <div class="today-passage" id="todayPassage">본문을 불러오는 중...</div>
+      <p class="today-theme" id="todayTheme"></p>
+      <div class="today-meta">
+        <span id="todayMeta" style="color: var(--muted); font-size: 0.92rem;"></span>
+        <div class="action-group">
+          <a class="read-link-btn" id="todayReadLink" href="#" target="_blank" rel="noopener noreferrer">📖 개역개정 본문 읽기</a>
+          <button class="check-btn" id="todayCheckBtn" type="button">오늘 말씀 읽음 체크</button>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <div class="note-box-header">
+          <label for="noteInput">✍️ 오늘의 묵상 및 기도 기록</label>
+          <span class="save-status" id="saveStatus"></span>
+        </div>
+        <textarea id="noteInput" placeholder="오늘 말씀을 통해 주신 은혜, 결단, 기도 제목을 자유롭게 기록해 보세요. (입력하시면 이 기기에 자동 저장됩니다)"></textarea>
+        <div class="band-actions">
+          <button class="copy-btn" type="button" onclick="copyForBand()">📋 말씀+묵상 한 번에 복사</button>
+          <a class="band-btn" href="https://band.us/n/a4a6b872W4ga8" target="_blank" rel="noopener noreferrer">🟢 밴드에 올리러 가기 (붙여넣기)</a>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>5개년 전체 통독 진행률</span>
+          <span id="progressText">0 / 1,826일 (0%)</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="daily">월별 일일 진도표</button>
+      <button class="tab-btn" data-tab="memos">나의 묵상 노트</button>
+      <button class="tab-btn" data-tab="roadmap">5개년 전체 계획</button>
+    </div>
+
+    <section class="card" id="tab-daily">
+      <div class="controls">
+        <select id="yearSelect"></select>
+        <select id="monthSelect"></select>
+        <input type="text" id="searchInput" placeholder="성경 책명·주제 검색 (예: 마가복음, 창세기)" />
+        <button class="btn-outline" type="button" onclick="window.print()">인쇄하기</button>
+      </div>
+      <div id="dailyList"></div>
+    </section>
+
+    <section class="card hidden" id="tab-memos">
+      <div class="controls">
+        <span style="flex:1; font-weight:700; color:var(--primary); align-self:center;" id="memoCountText">저장된 묵상: 0건</span>
+        <button class="btn-outline" type="button" onclick="exportMemos()">묵상 기록 파일로 내보내기 (.txt)</button>
+      </div>
+      <div id="memoList"></div>
+    </section>
+
+    <section class="card hidden" id="tab-roadmap">
+      <table>
+        <thead>
+          <tr>
+            <th>연차</th>
+            <th>주요 배정 성경 (한 권 완독 · 신구약 교차)</th>
+            <th>총 장수</th>
+          </tr>
+        </thead>
+        <tbody id="roadmapBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    (function setupPWA() {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = 512;
+        canvas.height = 512;
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "#2b4c3f";
+        ctx.fillRect(0, 0, 512, 512);
+        ctx.fillStyle = "#e6c365";
+        ctx.fillRect(234, 96, 44, 210);
+        ctx.fillRect(166, 152, 180, 40);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 54px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("새벽성경통독", 256, 395);
+        ctx.font = "bold 30px sans-serif";
+        ctx.fillStyle = "#cfe3d8";
+        ctx.fillText("5개년 말씀 묵상", 256, 445);
+
+        const iconUrl = canvas.toDataURL("image/png");
+        document.getElementById("appleIcon").href = iconUrl;
+        document.getElementById("appIcon").href = iconUrl;
+
+        const manifest = {
+          name: "5개년 성경 통독 · 새벽기도회",
+          short_name: "새벽성경통독",
+          start_url: ".",
+          display: "standalone",
+          background_color: "#f7f5f0",
+          theme_color: "#2b4c3f",
+          icons: [{ src: iconUrl, sizes: "512x512", type: "image/png" }]
+        };
+        const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
+        document.getElementById("appManifest").href = URL.createObjectURL(blob);
+      } catch (e) {}
+    })();
+
+    function toggleInstallGuide() {
+      document.getElementById("installGuideBox").classList.toggle("hidden");
+    }
+
+    const BOOK_CODES = {
+      "창세기":"gen","출애굽기":"exo","레위기":"lev","민수기":"num","신명기":"deu",
+      "여호수아":"jos","사사기":"jdg","룻기":"rut","사무엘상":"1sa","사무엘하":"2sa",
+      "열왕기상":"1ki","열왕기하":"2ki","역대상":"1ch","역대하":"2ch","에스라":"ezr",
+      "느헤미야":"neh","에스더":"est","욥기":"job","시편":"psa","잠언":"pro",
+      "전도서":"ecc","아가":"sng","이사야":"isa","예레미야":"jer","예레미야애가":"lam",
+      "에스겔":"ezk","다니엘":"dan","호세아":"hos","요엘":"jol","아모스":"amo",
+      "오바댜":"oba","요나":"jon","미가":"mic","나훔":"nam","하박국":"hab",
+      "스바냐":"zep","학개":"hag","스가랴":"zec","말라기":"mal","마태복음":"mat",
+      "마가복음":"mrk","누가복음":"luk","요한복음":"jhn","사도행전":"act","로마서":"rom",
+      "고린도전서":"1co","고린도후서":"2co","갈라디아서":"gal","에베소서":"eph","빌립보서":"php",
+      "골로새서":"col","데살로니가전서":"1th","데살로니가후서":"2th","디모데전서":"1ti","디모데후서":"2ti",
+      "디도서":"tit","빌레몬서":"phm","히브리서":"heb","야고보서":"jas","베드로전서":"1pe",
+      "베드로후서":"2pe","요한일서":"1jn","요한이서":"2jn","요한삼서":"3jn","유다서":"jud",
+      "요한계시록":"rev"
+    };
+
+    const PLAN_BLOCKS = [
+      [1,"마가복음",1,16,31],[1,"창세기",1,50,59],[1,"사도행전",1,28,50],[1,"야고보서",1,5,9],
+      [1,"출애굽기",1,40,47],[1,"시편(1권)",1,41,44],[1,"빌레몬서",1,1,1],[1,"여호수아",1,24,26],
+      [1,"사사기",1,21,29],[1,"룻기",1,4,4],[1,"요나",1,4,4],[1,"요엘",1,3,4],
+      [1,"오바댜",1,1,1],[1,"레위기",1,27,33],[1,"갈라디아서",1,6,13],[1,"마태복음",1,5,10],
+      [2,"마태복음",6,28,52],[2,"민수기",1,36,48],[2,"데살로니가전서",1,5,6],[2,"데살로니가후서",1,3,4],
+      [2,"사무엘상",1,31,42],[2,"사무엘하",1,24,36],[2,"에베소서",1,6,12],[2,"시편(2권)",42,72,31],
+      [2,"잠언",1,31,31],[2,"아모스",1,9,12],[2,"빌립보서",1,4,9],[2,"골로새서",1,4,9],
+      [2,"신명기",1,34,74],
+      [3,"누가복음",1,24,62],[3,"열왕기상",1,22,28],[3,"고린도전서",1,16,31],[3,"열왕기하",1,25,30],
+      [3,"고린도후서",1,13,20],[3,"미가",1,7,11],[3,"호세아",1,14,14],[3,"시편(3권)",73,89,16],
+      [3,"이사야",1,66,92],[3,"욥기",1,42,61],
+      [4,"요한복음",1,21,62],[4,"예레미야",1,52,59],[4,"예레미야애가",1,5,7],[4,"로마서",1,16,38],
+      [4,"시편(4권)",90,106,16],[4,"에스겔",1,48,61],[4,"다니엘",1,12,19],[4,"나훔",1,3,4],
+      [4,"하박국",1,3,4],[4,"스바냐",1,3,4],[4,"전도서",1,12,18],[4,"아가",1,8,12],
+      [4,"디모데전서",1,6,9],[4,"디모데후서",1,4,6],[4,"디도서",1,3,4],[4,"에스라",1,10,12],
+      [4,"느헤미야",1,13,18],[4,"에스더",1,10,12],
+      [5,"히브리서",1,13,31],[5,"역대상",1,29,31],[5,"역대하",1,36,48],[5,"베드로전서",1,5,7],
+      [5,"베드로후서",1,3,4],[5,"시편(5권)",107,150,48],[5,"요한일서",1,5,8],[5,"요한이서",1,1,1],
+      [5,"요한삼서",1,1,1],[5,"유다서",1,1,3],[5,"학개",1,2,5],[5,"스가랴",1,14,42],
+      [5,"말라기",1,4,14],[5,"요한계시록",1,22,122]
+    ];
+
+    const DETAIL_OVERRIDE = {
+      "2026-12-01": ["마가복음 1:1~20", "침례 요한의 외침 / 예수님의 침례와 시험 / 첫 제자들을 부르심 (5개년 대장정 첫날)"],
+      "2026-12-02": ["마가복음 1:21~45", "회당에서 귀신을 쫓아내심 / 새벽 미명의 기도 / 나병환자를 고치심"],
+      "2026-12-03": ["마가복음 2:1~17", "중풍병자를 고치심 / 레위를 부르시고 죄인들과 함께 잡수심"],
+      "2026-12-04": ["마가복음 2:18~3:12", "금식 논쟁과 안식일의 주인이신 예수님 / 손 마른 사람을 고치심"],
+      "2026-12-05": ["마가복음 3:13~35", "열두 제자를 세우심 / 성령 모독에 대한 경고 / 예수님의 참 가족"],
+      "2026-12-06": ["마가복음 4:1~20", "씨 뿌리는 자의 비유와 비유로 말씀하신 이유 (대림절 제2주일)"],
+      "2026-12-07": ["마가복음 4:21~41", "등불과 겨자씨 비유 / 광풍을 잠잠하게 하신 예수님"],
+      "2026-12-08": ["마가복음 5:1~20", "거라사 지방의 군대 귀신 들린 사람을 고치심"],
+      "2026-12-09": ["마가복음 5:21~43", "회당장 야이로의 딸을 살리시고 혈루증 여인을 고치심"],
+      "2026-12-10": ["마가복음 6:1~29", "고향에서 배척받으심 / 열두 제자 파송 / 침례 요한의 죽음"],
+      "2026-12-11": ["마가복음 6:30~56", "오병이어의 기적과 물 위를 걸으신 예수님"],
+      "2026-12-12": ["마가복음 7:1~23", "장로들의 전통과 마음에서 나오는 악한 것들"],
+      "2026-12-13": ["마가복음 7:24~37", "수로보니게 여인의 믿음 / 귀 먹고 말 더듬는 사람을 고치심 (대림절 제3주일)"],
+      "2026-12-14": ["마가복음 8:1~21", "칠병이어의 기적 / 바리새인들의 누룩을 주의하라"],
+      "2026-12-15": ["마가복음 8:22~38", "벳새다의 맹인 치유 / 베드로의 신앙고백과 자기 십자가"],
+      "2026-12-16": ["마가복음 9:1~29", "변화산 사건 / 귀신 들린 아이를 고치시며 기도의 능력을 가르치심"],
+      "2026-12-17": ["마가복음 9:30~50", "누가 크냐 하는 논쟁 / 어린아이 하나를 영접하는 삶과 소금의 비유"],
+      "2026-12-18": ["마가복음 10:1~31", "결혼과 이혼에 대한 가르침 / 어린아이들을 축복하심 / 부자 청년과 영생"],
+      "2026-12-19": ["마가복음 10:32~52", "섬기러 오신 인자(대속물) / 맹인 바디매오의 눈을 뜨게 하심"],
+      "2026-12-20": ["마가복음 11:1~19", "예루살렘 입성과 성전을 깨끗하게 하시는 예수님 (대림절 제4주일)"],
+      "2026-12-21": ["마가복음 11:20~33", "믿음과 용서의 기도 / 예수님의 권위에 대한 논쟁"],
+      "2026-12-22": ["마가복음 12:1~27", "포도원 농부의 비유 / 가이사의 것과 하나님의 것 / 부활 논쟁"],
+      "2026-12-23": ["마가복음 12:28~44", "가장 첫째 되는 계명(하나님 사랑·이웃 사랑) / 가난한 과부의 두 렙돈"],
+      "2026-12-24": ["마가복음 13:1~23", "성전 파괴 예고와 종말의 징조 / 끝까지 견디는 자의 구원 (성탄절 이브)"],
+      "2026-12-25": ["마가복음 13:24~37", "인자의 오심과 깨어 있으라는 명령 (성탄절)"],
+      "2026-12-26": ["마가복음 14:1~26", "향유 옥합을 깨뜨린 여인 / 유다의 배신과 마지막 성만찬"],
+      "2026-12-27": ["마가복음 14:27~52", "겟세마네 동산의 눈물의 기도와 체포되시는 예수님 (송년주일)"],
+      "2026-12-28": ["마가복음 14:53~72", "공회 앞에 서신 예수님과 베드로의 세 번 부인 및 회개의 눈물"],
+      "2026-12-29": ["마가복음 15:1~20", "빌라도의 재판과 군병들의 조롱을 받으시는 왕"],
+      "2026-12-30": ["마가복음 15:21~47", "골고다 십자가의 죽으심 / 백부장의 고백과 아리마대 요셉의 장사"],
+      "2026-12-31": ["마가복음 16:1~20", "부활의 아침과 빈 무덤 / 온 천하에 복음을 전파하라는 사명 (마가복음 완독)"]
+    };
+
+    const ROADMAP = [
+      ["1년 차 (2026.12~2027.11)", "마가복음 · 창세기 · 사도행전 · 야고보서 · 출애굽기 · 시편(1권) · 빌레몬서 · 여호수아 · 사사기 · 룻기 · 요나 · 요엘 · 오바댜 · 레위기 · 갈라디아서 · 마태복음(1~5장)", "236장"],
+      ["2년 차 (2027.12~2028.11)", "마태복음(6~28장) · 민수기 · 데살로니가전후서 · 사무엘상하 · 에베소서 · 시편(2권) · 잠언 · 아모스 · 빌립보서 · 골로새서 · 신명기", "240장"],
+      ["3년 차 (2028.12~2029.11)", "누가복음 · 열왕기상하 · 고린도전후서 · 미가 · 호세아 · 시편(3권) · 이사야 · 욥기", "238장"],
+      ["4년 차 (2029.12~2030.11)", "요한복음 · 예레미야 · 예레미야애가 · 로마서 · 시편(4권) · 에스겔 · 다니엘 · 나훔 · 하박국 · 스바냐 · 전도서 · 아가 · 디모데전후서 · 디도서 · 에스라 · 느헤미야 · 에스더", "235장"],
+      ["5년 차 (2030.12~2031.11)", "히브리서 · 역대상하 · 베드로전후서 · 시편(5권) · 요한1·2·3서 · 유다서 · 학개 · 스가랴 · 말라기 · 요한계시록", "240장"]
+    ];
+
+    const DAYS_KR = ["일", "월", "화", "수", "목", "금", "토"];
+
+    function getBibleUrl(book, chap) {
+      const cleanName = book.startsWith("시편") ? "시편" : book;
+      const code = BOOK_CODES[cleanName] || "gen";
+      return `https://www.bskorea.or.kr/bible/korbibReadpage.php?version=GAE&book=${code}&chap=${chap}`;
+    }
+
+    function buildFullSchedule() {
+      const result = [];
+      let cursor = new Date(2026, 11, 1);
+
+      PLAN_BLOCKS.forEach(([yearNum, book, startCh, endCh, days]) => {
+        const totalCh = endCh - startCh + 1;
+        const unit = book.startsWith("시편") ? "편" : "장";
+
+        for (let i = 0; i < days; i++) {
+          const y = cursor.getFullYear();
+          const m = String(cursor.getMonth() + 1).padStart(2, "0");
+          const d = String(cursor.getDate()).padStart(2, "0");
+          const dateStr = `${y}-${m}-${d}`;
+          const dayKr = DAYS_KR[cursor.getDay()];
+
+          const cStart = startCh + Math.floor((i * totalCh) / days);
+          const cEnd = startCh + Math.floor(((i + 1) * totalCh) / days) - 1;
+
+          let passage = "";
+          let theme = `${yearNum}년 차 새벽기도회 말씀 묵상 (${book})`;
+
+          if (DETAIL_OVERRIDE[dateStr]) {
+            passage = DETAIL_OVERRIDE[dateStr][0];
+            theme = DETAIL_OVERRIDE[dateStr][1];
+          } else {
+            if (cEnd >= cStart) {
+              passage = cStart === cEnd ? `${book} ${cStart}${unit}` : `${book} ${cStart}~${cEnd}${unit}`;
+            } else {
+              const sameDays = [];
+              for (let j = 0; j < days; j++) {
+                if (startCh + Math.floor((j * totalCh) / days) === cStart) sameDays.push(j);
+              }
+              passage = `${book} ${cStart}${unit} (${sameDays.indexOf(i) + 1}/${sameDays.length})`;
+            }
+            if (i === days - 1) theme += ` · ${book} 완독`;
+          }
+
+          result.push({
+            date: dateStr, day: dayKr, yearNum, book, passage, theme,
+            readUrl: getBibleUrl(book, cStart)
+          });
+          cursor.setDate(cursor.getDate() + 1);
+        }
+      });
+      return result;
+    }
+
+    const DAILY_DATA = buildFullSchedule();
+    const CHECK_KEY = "bible_5yr_checked_v2";
+    const MEMO_KEY = "bible_5yr_memos_v2";
+    let checkedMap = JSON.parse(localStorage.getItem(CHECK_KEY) || "{}");
+    let memoMap = JSON.parse(localStorage.getItem(MEMO_KEY) || "{}");
+
+    const dateInput = document.getElementById("dateInput");
+    const todayBadge = document.getElementById("todayBadge");
+    const todayPassage = document.getElementById("todayPassage");
+    const todayTheme = document.getElementById("todayTheme");
+    const todayMeta = document.getElementById("todayMeta");
+    const todayReadLink = document.getElementById("todayReadLink");
+    const todayCheckBtn = document.getElementById("todayCheckBtn");
+    const noteInput = document.getElementById("noteInput");
+    const saveStatus = document.getElementById("saveStatus");
+    const yearSelect = document.getElementById("yearSelect");
+    const monthSelect = document.getElementById("monthSelect");
+    const searchInput = document.getElementById("searchInput");
+    const dailyList = document.getElementById("dailyList");
+    const memoList = document.getElementById("memoList");
+
+    function getLocalTodayStr() {
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    }
+
+    function saveChecked() {
+      localStorage.setItem(CHECK_KEY, JSON.stringify(checkedMap));
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = DAILY_DATA.length;
+      const done = DAILY_DATA.filter((item) => checkedMap[item.date]).length;
+      const pct = total ? ((done / total) * 100).toFixed(1) : 0;
+      document.getElementById("progressText").textContent = `${done.toLocaleString()} / ${total.toLocaleString()}일 (${pct}%)`;
+      document.getElementById("progressFill").style.width = `${pct}%`;
+    }
+
+    function renderToday(targetDate) {
+      const found = DAILY_DATA.find((item) => item.date === targetDate);
+      if (!found) {
+        todayBadge.textContent = targetDate;
+        todayPassage.textContent = "진도표 기간(2026.12.01 ~ 2031.11.30) 외의 날짜입니다.";
+        todayTheme.textContent = "날짜 이동에서 2026년 12월 1일 이후를 선택해 보세요.";
+        todayMeta.textContent = "";
+        todayReadLink.style.display = "none";
+        todayCheckBtn.style.display = "none";
+        noteInput.value = "";
+        noteInput.disabled = true;
+        return;
+      }
+
+      todayBadge.textContent = `${found.yearNum}년 차 · ${found.date} (${found.day})`;
+      todayPassage.textContent = found.passage;
+      todayTheme.textContent = found.theme;
+      todayMeta.textContent = found.day === "일" ? "주일 새벽 말씀" : "매일 새벽기도회 본문";
+
+      todayReadLink.style.display = "inline-flex";
+      todayReadLink.href = found.readUrl;
+
+      todayCheckBtn.style.display = "inline-flex";
+      const isDone = !!checkedMap[found.date];
+      todayCheckBtn.classList.toggle("done", isDone);
+      todayCheckBtn.textContent = isDone ? "✓ 오늘 말씀 읽음 완료" : "오늘 말씀 읽음 체크";
+      todayCheckBtn.onclick = () => {
+        checkedMap[found.date] = !checkedMap[found.date];
+        saveChecked();
+        renderToday(found.date);
+        renderList();
+      };
+
+      noteInput.disabled = false;
+      noteInput.value = memoMap[found.date] || "";
+      saveStatus.textContent = memoMap[found.date] ? "저장됨" : "";
+    }
+
+    function copyForBand() {
+      const d = dateInput.value;
+      const found = DAILY_DATA.find((x) => x.date === d);
+      if (!found) return;
+      const memo = noteInput.value.trim();
+      const text = `[${found.date} (${found.day}) 새벽기도회 말씀 묵상]\n📖 본문: ${found.passage}\n✨ 주제: ${found.theme}\n\n✍️ 오늘의 묵상:\n${memo || "(묵상 내용을 작성해 주세요)"}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          saveStatus.textContent = "복사 완료! 밴드에 붙여넣으세요";
+        }).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const temp = document.createElement("textarea");
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+      saveStatus.textContent = "복사 완료! 밴드에 붙여넣으세요";
+    }
+
+    noteInput.addEventListener("input", () => {
+      const d = dateInput.value;
+      const val = noteInput.value;
+      if (val.trim()) memoMap[d] = val;
+      else delete memoMap[d];
+      localStorage.setItem(MEMO_KEY, JSON.stringify(memoMap));
+      saveStatus.textContent = "자동 저장됨";
+      renderList();
+      renderMemos();
+    });
+
+    function initSelectors() {
+      for (let y = 1; y <= 5; y++) {
+        const opt = document.createElement("option");
+        opt.value = String(y);
+        opt.textContent = `${y}년 차`;
+        yearSelect.appendChild(opt);
+      }
+      updateMonthOptions();
+    }
+
+    function updateMonthOptions() {
+      const yNum = Number(yearSelect.value);
+      const months = [...new Set(DAILY_DATA.filter((d) => d.yearNum === yNum).map((d) => d.date.slice(0, 7)))];
+      monthSelect.innerHTML = "";
+      months.forEach((m) => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = `${m.slice(0, 4)}년 ${Number(m.slice(5, 7))}월`;
+        monthSelect.appendChild(opt);
+      });
+    }
+
+    function jumpToDate(dateStr) {
+      dateInput.value = dateStr;
+      renderToday(dateStr);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderList() {
+      const month = monthSelect.value;
+      const q = searchInput.value.trim().toLowerCase();
+      dailyList.innerHTML = "";
+
+      const filtered = DAILY_DATA.filter((item) => {
+        const matchMonth = q ? true : item.date.startsWith(month);
+        const matchQuery = !q || item.passage.toLowerCase().includes(q) || item.theme.toLowerCase().includes(q);
+        return matchMonth && matchQuery;
+      });
+
+      if (filtered.length === 0) {
+        dailyList.innerHTML = `<p style="color:var(--muted); text-align:center;">검색 결과가 없습니다.</p>`;
+        return;
+      }
+
+      filtered.slice(0, 100).forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "list-item";
+
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = !!checkedMap[item.date];
+        cb.onchange = () => {
+          checkedMap[item.date] = cb.checked;
+          saveChecked();
+          if (dateInput.value === item.date) renderToday(item.date);
+        };
+
+        const body = document.createElement("div");
+        body.className = "item-body";
+        body.onclick = (e) => { if (e.target.tagName !== "A") jumpToDate(item.date); };
+        const hasMemo = !!memoMap[item.date];
+        body.innerHTML = `
+          <div class="item-top">
+            <span class="item-passage">${item.passage}</span>
+            <span class="item-date">${item.date} (${item.day})</span>
+          </div>
+          <div class="item-theme">${item.theme}</div>
+          <div class="item-tags">
+            <a class="item-read-link" href="${item.readUrl}" target="_blank" rel="noopener noreferrer">개역개정 본문 읽기 ↗</a>
+            ${hasMemo ? `<span class="item-memo-badge">✍️ 묵상 기록 있음</span>` : ""}
+          </div>
+        `;
+
+        row.appendChild(cb);
+        row.appendChild(body);
+        dailyList.appendChild(row);
+      });
+    }
+
+    function renderMemos() {
+      const keys = Object.keys(memoMap).sort().reverse();
+      document.getElementById("memoCountText").textContent = `저장된 묵상: ${keys.length}건`;
+      if (keys.length === 0) {
+        memoList.innerHTML = `<p style="color:var(--muted); text-align:center;">아직 작성된 묵상 기록이 없습니다. 위 입력창에 오늘의 묵상을 적어 보세요.</p>`;
+        return;
+      }
+      memoList.innerHTML = keys.map((d) => {
+        const info = DAILY_DATA.find((x) => x.date === d);
+        const title = info ? `${d} (${info.day}) · ${info.passage}` : d;
+        return `
+          <div class="memo-card" onclick="jumpToDate('${d}')">
+            <div class="memo-card-head">
+              <span>${title}</span>
+              <span style="font-size:0.82rem; color:var(--muted);">수정하기 →</span>
+            </div>
+            <div class="memo-card-text">${memoMap[d].replace(/</g, "&lt;")}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function exportMemos() {
+      const keys = Object.keys(memoMap).sort();
+      if (keys.length === 0) {
+        alert("내보낼 묵상 기록이 아직 없습니다.");
+        return;
+      }
+      const lines = keys.map((d) => {
+        const info = DAILY_DATA.find((x) => x.date === d);
+        return `[${d}] ${info ? info.passage : ""}\n${memoMap[d]}\n`;
+      }).join("\n------------------------------\n\n");
+
+      const blob = new Blob([lines], { type: "text/plain;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "나의_성경통독_묵상노트.txt";
+      a.click();
+    }
+
+    function renderRoadmap() {
+      document.getElementById("roadmapBody").innerHTML = ROADMAP.map(([yr, books, cnt]) => `
+        <tr><td><strong>${yr}</strong></td><td>${books}</td><td>${cnt}</td></tr>
+      `).join("");
+    }
+
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.onclick = () => {
+        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const tab = btn.dataset.tab;
+        document.getElementById("tab-daily").classList.toggle("hidden", tab !== "daily");
+        document.getElementById("tab-memos").classList.toggle("hidden", tab !== "memos");
+        document.getElementById("tab-roadmap").classList.toggle("hidden", tab !== "roadmap");
+      };
+    });
+
+    dateInput.onchange = () => renderToday(dateInput.value);
+    yearSelect.onchange = () => { updateMonthOptions(); renderList(); };
+    monthSelect.onchange = renderList;
+    searchInput.oninput = renderList;
+
+    initSelectors();
+    const todayStr = getLocalTodayStr();
+    const initial = DAILY_DATA.find((x) => x.date === todayStr) || DAILY_DATA[0];
+    dateInput.value = initial.date;
+    yearSelect.value = String(initial.yearNum);
+    updateMonthOptions();
+    monthSelect.value = initial.date.slice(0, 7);
+
+    renderToday(initial.date);
+    renderList();
+    renderMemos();
+    renderRoadmap();
+    updateProgress();
+  </script>
+</body>
+</html>
